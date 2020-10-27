@@ -105,47 +105,54 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   Divider(color: Colors.black54, thickness: 3,),
                   //Card Show 
-                  Card(
-                    margin: EdgeInsets.all(10),
-                    color: Colors.grey[200],
-                    elevation: 3,
-                    semanticContainer: true,
-                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(20)),
-                    ),
-                    child: Container(
-                      height: size.height * 0.3,
-                      width: size.width * 0.4,
-                      child: Column(
-                        children: <Widget>[
-                          Container(
-                            height: size.height * 0.25,
+                  Expanded(
+                    child: GridView.count(
+                      crossAxisCount: 2,
+                      childAspectRatio: .7,
+                      children: <Widget>[
+                        Card(
+                          margin: EdgeInsets.all(10),
+                          color: Colors.grey[200],
+                          elevation: 3,
+                          semanticContainer: true,
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                          ),
+                          child: Container(
+                            height: size.height * 0.3,
                             width: size.width * 0.4,
-                            child: Image.asset(
-                              //demo
-                              'assets/images/sneakers.jpg', 
-                              fit: BoxFit.cover,
+                            child: Column(
+                              children: <Widget>[
+                                Container(
+                                  height: size.height * 0.25,
+                                  width: size.width * 0.4,
+                                  child: Image.asset(
+                                    //demo
+                                    'assets/images/sneakers.jpg', 
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                Container(
+                                  height: size.height * 0.05,
+                                  width: size.width * 0.4,
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                    //demo
+                                    'Sneaker'.toUpperCase(),
+                                    style: Theme.of(context).textTheme.button.copyWith(fontSize: 20),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                          Container(
-                            height: size.height * 0.05,
-                            width: size.width * 0.4,
-                            alignment: Alignment.center,
-                            child: Text(
-                              //demo
-                              'Sneaker'.toUpperCase(),
-                              style: Theme.of(context).textTheme.button.copyWith(fontSize: 20),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                        ),
+                      ],
+                    )
                   ),
                 ],
               ),
             ),
-
           ],
         ),
       ),

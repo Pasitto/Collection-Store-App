@@ -1,10 +1,11 @@
+import 'package:collection_store/config/routes.dart';
 import 'package:collection_store/screen/addcollection.dart';
 import 'package:collection_store/screen/additem.dart';
 import 'package:collection_store/screen/home.dart';
 import 'package:collection_store/screen/itemdetail.dart';
 import 'package:collection_store/screen/showitem.dart';
 import 'package:flutter/material.dart';
-import 'package:collection_store/config/routes.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -25,12 +26,7 @@ class MyApp extends StatelessWidget {
         AppRoutes.addcol: (context) => AddcollectionScreen(),
         AppRoutes.additem: (context) => AdditemScreen(),
       },
-      //onGenerateInitialRoutes: _registerRWP,
     );
     return materialApp;
   }
 }
-
-// Route _registerRWP(RouteSettings settings){
-
-// }

@@ -1,5 +1,6 @@
 import 'package:collection_store/config/routes.dart';
 import 'package:collection_store/screen/home.dart';
+import 'package:collection_store/screen/showitem.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,16 +12,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      //debugShowCheckedModeBanner: false,
       title: 'Collection Store',
       routes: {
         AppRoutes.home: (context) => HomeScreen(),
+        AppRoutes.showitem: (context) => ShowitemScreen(),
       },
       //onGenerateInitialRoutes: _registerRWP,
     );
   }
 }
 
-Route _registerRWP(RouteSettings settings){
+// Route _registerRWP(RouteSettings settings){
 
-}
+// }

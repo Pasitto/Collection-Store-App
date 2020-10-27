@@ -44,7 +44,9 @@ class _ShowitemScreenState extends State<ShowitemScreen> {
                         backgroundColor: Color(0xFFFE5555),
                         mini: true,
                         child: Icon(Icons.add),
-                        onPressed: () => {},
+                        onPressed: () => {
+                          Navigator.of(context).pushNamed(AppRoutes.additem),
+                        },
                       ),
                     ],
                   ),

@@ -45,8 +45,9 @@ class _DetailScreenState extends State<DetailScreen> {
                     ),
                     child: Row(
                       children: <Widget>[
-                        Column(
+                        Expanded(child: Column(
                           //body widget
+                          mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text('Score'),
@@ -76,12 +77,13 @@ class _DetailScreenState extends State<DetailScreen> {
                                 ),
                               ],
                             ),
+                            Divider(color: Colors.black45, thickness: 2,height: 35,),
                             Padding(
                               padding: EdgeInsets.symmetric(
                                 vertical: 8.0,
+                                horizontal: 16.0,
                               ),
                               child: Container (
-                                padding: const EdgeInsets.all(16.0),
                                 width: size.width * 0.8,
                                 child: Column (
                                   children: <Widget>[
@@ -95,7 +97,7 @@ class _DetailScreenState extends State<DetailScreen> {
                               )
                             ),
                           ],
-                        )
+                        ))
                       ],
                     ),
                   ),

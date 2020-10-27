@@ -52,9 +52,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Icon(
-                        Icons.supervised_user_circle, 
-                        size: size.height * 0.15, color: Colors.white,
+                      Container(
+                        width: size.height * 0.15,
+                        height: size.height * 0.15,
+                        decoration: BoxDecoration(
+                          color: Colors.black,
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            fit: BoxFit.fill,
+                            //demo
+                            image: AssetImage('assets/images/sneakers.jpg')
+                          ),
+                        ),
                       ),
                       Container(
                         width: size.width * 0.45,

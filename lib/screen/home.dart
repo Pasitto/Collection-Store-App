@@ -1,3 +1,4 @@
+import 'package:collection_store/data/accout.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -8,6 +9,10 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
+    //demo test
+    final Account user = Account(username: 'Pasitto');
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home', style: TextStyle(color: Colors.white)),
@@ -26,14 +31,14 @@ class _HomeScreenState extends State<HomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Container(   //Head of body
-              height: 250,
+              height: size.height * 0.25,
               alignment: Alignment.centerLeft,
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               decoration: BoxDecoration(
                 color: Color(0xFFFE5555),
                 borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(50),
-                  bottomRight: Radius.circular(50),
+                  bottomLeft: Radius.circular(40),
+                  bottomRight: Radius.circular(40),
                 )
               ),
               child: Column(
@@ -41,35 +46,44 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: <Widget>[
                   Text(
                     'Welcome!',
-                    style: TextStyle(color: Colors.white, fontSize: 50, fontWeight: FontWeight.bold),
+                    style: TextStyle(color: Colors.white, fontSize: 40, fontWeight: FontWeight.bold),
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Icon(
                         Icons.supervised_user_circle, 
-                        size: 150, color: Colors.white,
+                        size: size.height * 0.15, color: Colors.white,
                       ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(
-                            'Name',
-                            style: TextStyle(color: Colors.white, fontSize: 40, fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            'Detail',
-                            style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),  
+                      Container(
+                        width: size.width * 0.5,
+                        padding: EdgeInsets.all(15),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              user.username,
+                              style: TextStyle(color: Colors.white, fontSize: 35, fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              'Detail',
+                              style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Icon(
+                        Icons.settings,
+                        size: size.height * 0.05, color: Colors.white,
+                      ),
                     ],
                   ),
                 ],
               ),
             ),
             Container( //body
-              height: 500,
+              height: size.height * 0.6,
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: Column(
                 children: <Widget>[
@@ -90,6 +104,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   Divider(color: Colors.black54, thickness: 3,),
                   //Card Show 
+
                 ],
               ),
             ),

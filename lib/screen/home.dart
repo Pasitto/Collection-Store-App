@@ -73,12 +73,14 @@ class _HomeScreenState extends State<HomeScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
+                              //demo
                               user.username,
                               style: TextStyle(color: Colors.white, fontSize: 35, fontWeight: FontWeight.bold),
                             ),
                             Text(
+                              //demo
                               'Detail',
-                              style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),
+                              style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),

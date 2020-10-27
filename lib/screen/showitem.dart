@@ -13,7 +13,6 @@ class _ShowitemScreenState extends State<ShowitemScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Collection', style: TextStyle(color: Colors.white)),
         backgroundColor: Color(0xFFFE5555),
         elevation: 0,
         actions: <Widget>[

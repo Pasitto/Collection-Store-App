@@ -1,5 +1,6 @@
 import 'package:collection_store/config/routes.dart';
 import 'package:collection_store/screen/home.dart';
+import 'package:collection_store/screen/itemdetail.dart';
 import 'package:collection_store/screen/showitem.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
       routes: {
         AppRoutes.home: (context) => HomeScreen(),
         AppRoutes.showitem: (context) => ShowitemScreen(),
+        AppRoutes.detail: (context) => DetailScreen(),
       },
       //onGenerateInitialRoutes: _registerRWP,
     );

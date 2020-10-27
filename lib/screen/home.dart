@@ -57,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         size: size.height * 0.15, color: Colors.white,
                       ),
                       Container(
-                        width: size.width * 0.5,
+                        width: size.width * 0.45,
                         padding: EdgeInsets.all(15),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -74,9 +74,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           ],
                         ),
                       ),
-                      Icon(
-                        Icons.settings,
-                        size: size.height * 0.05, color: Colors.white,
+                      IconButton(
+                        icon: Icon(
+                          Icons.settings,
+                          size: size.height * 0.05, color: Colors.white,
+                        ),
+                        onPressed: () => {},
                       ),
                     ],
                   ),

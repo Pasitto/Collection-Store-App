@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:collection_store/config/routes.dart';
 
 class ShowitemScreen extends StatefulWidget {
   @override
@@ -18,7 +19,7 @@ class _ShowitemScreenState extends State<ShowitemScreen> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.notifications),
-            onPressed: () => {},
+            onPressed: () => {Navigator.of(context).pushNamed(AppRoutes.detail)},
           )
         ],
       ),

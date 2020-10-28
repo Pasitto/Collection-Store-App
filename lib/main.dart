@@ -1,13 +1,18 @@
+import 'package:bloc/bloc.dart';
 import 'package:collection_store/config/routes.dart';
+import 'package:collection_store/cubit/user_cubit.dart';
 import 'package:collection_store/screen/addcollection.dart';
 import 'package:collection_store/screen/additem.dart';
 import 'package:collection_store/screen/home.dart';
 import 'package:collection_store/screen/itemdetail.dart';
 import 'package:collection_store/screen/showitem.dart';
+import 'package:collection_store/user_observer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 
 void main() {
+  Bloc.observer = UserObserver();
   runApp(MyApp());
 }
 
@@ -27,6 +32,9 @@ class MyApp extends StatelessWidget {
         AppRoutes.additem: (context) => AdditemScreen(),
       },
     );
-    return materialApp;
+    return BlocProvider(
+      create: (_) => UserCubit(),
+      child: materialApp,
+    );
   }
 }

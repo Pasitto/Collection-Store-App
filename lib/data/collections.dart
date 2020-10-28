@@ -7,9 +7,9 @@ class Collection {
   final int itemsize;
   List<Item> items = [];
   
-  Collection({
+  Collection(
     this.colimg,
     this.colname,
     this.itemsize,
-  });
+  );
 }

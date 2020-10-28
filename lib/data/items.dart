@@ -7,11 +7,11 @@ class Item {
   final DateTime date;
   final bool care;
   
-  Item({
+  Item(
     this.image,
     this.name,
     this.description,
     this.date,
     this.care,
-  });
+  );
 }

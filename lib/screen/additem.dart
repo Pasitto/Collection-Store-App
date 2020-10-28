@@ -1,7 +1,10 @@
+import 'package:collection_store/cubit/user_cubit.dart';
+import 'package:collection_store/data/items.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AdditemScreen extends StatefulWidget {
 
@@ -38,6 +41,20 @@ class _AdditemScreenState extends State<AdditemScreen> {
         print('No image selected.');
       }
     });
+  }
+
+  TextEditingController _namecontroller;
+  TextEditingController _discontroller;
+  void initState(){
+    super.initState();
+    _namecontroller = TextEditingController();
+    _discontroller = TextEditingController();
+  }
+  
+  void dispose() {
+    _namecontroller.dispose();
+    _discontroller.dispose();
+    super.dispose();
   }
 
   @override
@@ -102,8 +119,7 @@ class _AdditemScreenState extends State<AdditemScreen> {
                           enabledBorder: InputBorder.none,
                           focusedBorder: InputBorder.none,
                         ),
-                        //controller: ,
-                        //onChaged: ,
+                        controller: _namecontroller,
                         textAlign: TextAlign.start,
                         style: TextStyle(fontSize: 25),
                       ),
@@ -161,8 +177,7 @@ class _AdditemScreenState extends State<AdditemScreen> {
                               enabledBorder: InputBorder.none,
                               focusedBorder: InputBorder.none,
                             ),
-                            //controller: ,
-                            //onChaged: ,
+                            controller: _discontroller,
                             textAlign: TextAlign.start,
                             style: TextStyle(fontSize: 22),
                             keyboardType: TextInputType.multiline,
@@ -198,7 +213,19 @@ class _AdditemScreenState extends State<AdditemScreen> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(30)),
                       ),
-                      onPressed: () => {},
+                      onPressed: () => {
+                        context.bloc<UserCubit>().additem(widget.colindex, 
+                          Item(
+                            _image,
+                            _namecontroller.text,
+                            _discontroller.text,
+                            selected,
+                            isSwitched,
+                          )
+                        ),
+                        context.bloc<UserCubit>().update(),
+                        Navigator.of(context).pop(),
+                      },
                       child: Text('Add', style: TextStyle(fontSize: 25,color: Color(0xFFFE5555),fontWeight: FontWeight.bold),)
                     ),
                   ),

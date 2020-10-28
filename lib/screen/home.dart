@@ -1,7 +1,6 @@
 import 'package:collection_store/config/routes.dart';
 import 'package:collection_store/cubit/user_cubit.dart';
 import 'package:collection_store/data/accout.dart';
-import 'package:collection_store/screen/showitem.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -65,7 +64,6 @@ class _HomeScreenState extends State<HomeScreen> {
                               shape: BoxShape.circle,
                               image: DecorationImage(
                                 fit: BoxFit.fill,
-                                //demo
                                 image: AssetImage('${state.img}')
                               ),
                             ),
@@ -167,14 +165,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                       Container(
                                         height: size.height * 0.25,
                                         width: size.width * 0.4,
-                                        child: Image.file(state.collentions[index].colimg, fit: BoxFit.fill,),
+                                        child: Image.file(state.collections[index].colimg, fit: BoxFit.fill,),
                                       ),
                                       Container(
                                         height: size.height * 0.05,
                                         width: size.width * 0.4,
                                         alignment: Alignment.center,
                                         child: Text(
-                                          '${state.collentions[index].colname}'.toUpperCase(),
+                                          '${state.collections[index].colname}'.toUpperCase(),
                                           style: Theme.of(context).textTheme.button.copyWith(fontSize: 20),
                                         ),
                                       ),

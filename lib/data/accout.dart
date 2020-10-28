@@ -1,10 +1,11 @@
 import 'package:collection_store/data/collections.dart';
+import 'package:collection_store/data/items.dart';
 
 class Account{
   String img;
   String username, bio;
   int colsize;
-  List<Collection> collentions = [];
+  List<Collection> collections = [];
 
   Account(
     this.img,
@@ -12,10 +13,16 @@ class Account{
     this.bio,
     this.colsize,
   );
+  
   //Function
   void addcollection(Collection col){
     colsize++;
-    collentions.add(col);
+    collections.add(col);
+  }
+
+  void additem(int index, Item it){
+    collections[index].itemsize++;
+    collections[index].items.add(it);
   }
 }
 

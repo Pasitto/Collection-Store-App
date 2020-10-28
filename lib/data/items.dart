@@ -1,11 +1,11 @@
 import 'dart:io';
 
 class Item {
-  final File image;
-  final String name;
-  final String description;
-  final DateTime date;
-  final bool care;
+  File image;
+  String name;
+  String description;
+  DateTime date;
+  bool care;
   
   Item(
     this.image,

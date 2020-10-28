@@ -47,7 +47,7 @@ class _ShowitemScreenState extends State<ShowitemScreen> {
                       BlocBuilder<UserCubit, Account>(
                         builder: (context, state) {
                           return Text(
-                            '${state.collentions[widget.colindex].colname}',
+                            '${state.collections[widget.colindex].colname}',
                             style: TextStyle(color: Colors.grey, fontSize: 40, fontWeight: FontWeight.bold),
                           );
                         },
@@ -68,7 +68,7 @@ class _ShowitemScreenState extends State<ShowitemScreen> {
                     child: BlocBuilder<UserCubit, Account>(
                       builder: (context, state){
                         return GridView.builder(
-                          itemCount: state.collentions[widget.colindex].itemsize,
+                          itemCount: state.collections[widget.colindex].itemsize,
                           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
                             mainAxisSpacing: 20,
@@ -96,14 +96,14 @@ class _ShowitemScreenState extends State<ShowitemScreen> {
                                       Container(
                                         height: size.height * 0.25,
                                         width: size.width * 0.4,
-                                        child: Image.file(state.collentions[widget.colindex].items[index].image, fit: BoxFit.fill,),
+                                        child: Image.file(state.collections[widget.colindex].items[index].image, fit: BoxFit.fill,),
                                       ),
                                       Container(
                                         height: size.height * 0.05,
                                         width: size.width * 0.4,
                                         alignment: Alignment.center,
                                         child: Text(
-                                          '${state.collentions[widget.colindex].items[index].name}'.toUpperCase(),
+                                          '${state.collections[widget.colindex].items[index].name}'.toUpperCase(),
                                           style: Theme.of(context).textTheme.button.copyWith(fontSize: 20),
                                         ),
                                       ),

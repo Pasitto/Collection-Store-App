@@ -86,7 +86,7 @@ class _ShowitemScreenState extends State<ShowitemScreen> {
                                   alignment: Alignment.center,
                                   child: Text(
                                     //demo
-                                    'Sneaker'.toUpperCase(),
+                                    'Nike'.toUpperCase(),
                                     style: Theme.of(context).textTheme.button.copyWith(fontSize: 20),
                                   ),
                                 ),

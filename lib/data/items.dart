@@ -2,7 +2,6 @@ class Item {
   final String name;
   final String description;
   final int day, month, year;
-  final int score;
   final bool care;
   
   Item({
@@ -11,7 +10,6 @@ class Item {
     this.day,
     this.month,
     this.year,
-    this.score,
     this.care,
   });
 }

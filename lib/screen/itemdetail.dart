@@ -50,7 +50,6 @@ class _DetailScreenState extends State<DetailScreen> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Text('Score'),
                             Text(
                               'Name',
                               style: Theme.of(context)

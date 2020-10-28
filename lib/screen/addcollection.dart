@@ -1,4 +1,6 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class AddcollectionScreen extends StatefulWidget {
   @override
@@ -6,6 +8,22 @@ class AddcollectionScreen extends StatefulWidget {
 }
 
 class _AddcollectionScreenState extends State<AddcollectionScreen> {
+
+  File _image;
+  final picker = ImagePicker();
+
+  Future getImage() async {
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+
+    setState(() {
+      if (pickedFile != null) {
+        _image = File(pickedFile.path);
+      } else {
+        print('No image selected.');
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -39,9 +57,18 @@ class _AddcollectionScreenState extends State<AddcollectionScreen> {
                       style: TextStyle(color: Colors.white, fontSize: 40, fontWeight: FontWeight.bold),
                     ),
                   ),
-                  //add image
-
-                  //
+                  GestureDetector(
+                    onTap: getImage,
+                    child: Container(
+                      margin: EdgeInsets.all(20),
+                      height: size.height * 0.2,
+                      width: size.height * 0.2,
+                      color: Colors.black12,
+                      child: _image == null
+                      ? Icon(Icons.add, size: 50,)
+                      : Image.file(_image, fit: BoxFit.fill,),
+                    ),
+                  ),
                   ListTile(
                     leading: Text(
                       'Name '.toUpperCase(),
@@ -67,6 +94,7 @@ class _AddcollectionScreenState extends State<AddcollectionScreen> {
                     )
                   ),
                   Container(
+                    height: 50,
                     margin: EdgeInsets.symmetric(vertical: 20),
                     child: FlatButton(
                       //disabledColor: Colors.yellow,

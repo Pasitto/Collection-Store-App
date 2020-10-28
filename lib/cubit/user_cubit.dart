@@ -6,6 +6,10 @@ class UserCubit extends Cubit<Account> {
   UserCubit() : super(user); 
 
   //Function here
+  void update() {
+    emit(state);
+  }
+
   void addCol(Collection col){
     state.addcollection(col);
   }

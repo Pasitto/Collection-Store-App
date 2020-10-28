@@ -12,7 +12,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     //demo test
-    final Account user = Account(username: 'Pasitto');
+    final Account user = Account(username: 'Pasitto', bio: '~~Nice day~~');
 
     return Scaffold(
       appBar: AppBar(
@@ -61,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           image: DecorationImage(
                             fit: BoxFit.fill,
                             //demo
-                            image: AssetImage('assets/images/sneakers.jpg')
+                            image: AssetImage('assets/images/userimg.jpg')
                           ),
                         ),
                       ),
@@ -79,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             Text(
                               //demo
-                              'Detail',
+                              user.bio,
                               style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
                             ),
                           ],

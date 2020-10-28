@@ -26,15 +26,36 @@ class MyApp extends StatelessWidget {
       initialRoute: AppRoutes.home,
       routes: {
         AppRoutes.home: (context) => HomeScreen(),
-        AppRoutes.showitem: (context) => ShowitemScreen(),
-        AppRoutes.detail: (context) => DetailScreen(),
         AppRoutes.addcol: (context) => AddcollectionScreen(),
-        AppRoutes.additem: (context) => AdditemScreen(),
       },
+      onGenerateRoute: _registerRouteWithParameters,
     );
     return BlocProvider(
       create: (_) => UserCubit(),
       child: materialApp,
     );
   }
+}
+
+Route _registerRouteWithParameters(RouteSettings settings){
+  
+  if(settings.name == AppRoutes.showitem) {
+    return MaterialPageRoute(builder: (context){
+      return ShowitemScreen(settings.arguments);
+    });
+  }
+
+  if(settings.name == AppRoutes.additem) {
+    return MaterialPageRoute(builder: (context){
+      return AdditemScreen(settings.arguments);
+    });
+  }
+
+  if(settings.name == AppRoutes.detail) {
+    return MaterialPageRoute(builder: (context){
+      DetailParameter param = settings.arguments;
+      return DetailScreen(param.colindex, param.itemindex);
+    });
+  }
+
 }

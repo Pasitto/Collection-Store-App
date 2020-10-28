@@ -1,7 +1,15 @@
+import 'package:collection_store/cubit/user_cubit.dart';
+import 'package:collection_store/data/accout.dart';
+import 'package:collection_store/screen/itemdetail.dart';
 import 'package:flutter/material.dart';
 import 'package:collection_store/config/routes.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ShowitemScreen extends StatefulWidget {
+
+  final int colindex;
+  ShowitemScreen(this.colindex);
+
   @override
   _ShowitemScreenState createState() => _ShowitemScreenState();
 }
@@ -18,7 +26,9 @@ class _ShowitemScreenState extends State<ShowitemScreen> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.notifications),
-            onPressed: () => {Navigator.of(context).pushNamed(AppRoutes.detail)},
+            onPressed: () => {
+              //Navigator.of(context).pushNamed(AppRoutes.detail)
+            },
           )
         ],
       ),
@@ -34,10 +44,13 @@ class _ShowitemScreenState extends State<ShowitemScreen> {
                   Row(
                     //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Text(
-                        //demo
-                        'Sneaker',
-                        style: TextStyle(color: Colors.grey, fontSize: 40, fontWeight: FontWeight.bold),
+                      BlocBuilder<UserCubit, Account>(
+                        builder: (context, state) {
+                          return Text(
+                            '${state.collentions[widget.colindex].colname}',
+                            style: TextStyle(color: Colors.grey, fontSize: 40, fontWeight: FontWeight.bold),
+                          );
+                        },
                       ),
                       Spacer(),
                       FloatingActionButton(
@@ -51,50 +64,56 @@ class _ShowitemScreenState extends State<ShowitemScreen> {
                     ],
                   ),
                   Divider(color: Colors.black54, thickness: 3,),
-                  //Demo Card Show
                   Expanded(
-                    child: GridView.count(
-                      crossAxisCount: 2,
-                      childAspectRatio: .7,
-                      children: <Widget>[
-                        Card(
-                          margin: EdgeInsets.all(10),
-                          color: Colors.grey[200],
-                          elevation: 3,
-                          semanticContainer: true,
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                          ),
-                          child: Container(
-                            height: size.height * 0.3,
-                            width: size.width * 0.4,
-                            child: Column(
-                              children: <Widget>[
-                                Container(
-                                  height: size.height * 0.25,
+                    child: BlocBuilder<UserCubit, Account>(
+                      builder: (context, state){
+                        return GridView.builder(
+                          itemCount: state.collentions[widget.colindex].itemsize,
+                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 20,
+                            crossAxisSpacing: 20,
+                            childAspectRatio: 0.7,
+                          ), 
+                          itemBuilder: (context, index) => 
+                            GestureDetector(
+                              onTap: () => {
+                                Navigator.of(context).pushNamed(AppRoutes.detail, arguments: DetailParameter(widget.colindex, index)),
+                              },
+                              child: Card(
+                                color: Colors.grey[200],
+                                elevation: 3,
+                                semanticContainer: true,
+                                clipBehavior: Clip.antiAliasWithSaveLayer,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                                ),
+                                child: Container(
+                                  height: size.height * 0.3,
                                   width: size.width * 0.4,
-                                  child: Image.asset(
-                                    //demo
-                                    'assets/images/sneakers.jpg', 
-                                    fit: BoxFit.cover,
+                                  child: Column(
+                                    children: <Widget>[
+                                      Container(
+                                        height: size.height * 0.25,
+                                        width: size.width * 0.4,
+                                        child: Image.file(state.collentions[widget.colindex].items[index].image, fit: BoxFit.fill,),
+                                      ),
+                                      Container(
+                                        height: size.height * 0.05,
+                                        width: size.width * 0.4,
+                                        alignment: Alignment.center,
+                                        child: Text(
+                                          '${state.collentions[widget.colindex].items[index].name}'.toUpperCase(),
+                                          style: Theme.of(context).textTheme.button.copyWith(fontSize: 20),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                                Container(
-                                  height: size.height * 0.05,
-                                  width: size.width * 0.4,
-                                  alignment: Alignment.center,
-                                  child: Text(
-                                    //demo
-                                    'Nike'.toUpperCase(),
-                                    style: Theme.of(context).textTheme.button.copyWith(fontSize: 20),
-                                  ),
-                                ),
-                              ],
+                              ),
                             ),
-                          ),
-                        ),
-                      ],
+                        );
+                      },
                     )
                   ),
                 ],

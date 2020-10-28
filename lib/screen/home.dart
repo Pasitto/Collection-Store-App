@@ -1,6 +1,7 @@
 import 'package:collection_store/config/routes.dart';
 import 'package:collection_store/cubit/user_cubit.dart';
 import 'package:collection_store/data/accout.dart';
+import 'package:collection_store/screen/showitem.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -22,7 +23,9 @@ class _HomeScreenState extends State<HomeScreen> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.notifications),
-            onPressed: () => {Navigator.of(context).pushNamed(AppRoutes.showitem)},
+            onPressed: () => {
+              //Navigator.of(context).pushNamed(AppRoutes.showitem)
+            },
           )
         ],
       ),
@@ -52,19 +55,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      // Container(
-                      //   width: size.height * 0.15,
-                      //   height: size.height * 0.15,
-                      //   decoration: BoxDecoration(
-                      //     color: Colors.black,
-                      //     shape: BoxShape.circle,
-                      //     image: DecorationImage(
-                      //       fit: BoxFit.fill,
-                      //       //demo
-                      //       image: AssetImage('assets/images/userimg.jpg')
-                      //     ),
-                      //   ),
-                      // ),
                       BlocBuilder<UserCubit, Account>(
                         builder: (context, state) {
                           return Container(
@@ -157,34 +147,39 @@ class _HomeScreenState extends State<HomeScreen> {
                             childAspectRatio: 0.7,
                           ), 
                           itemBuilder: (context, index) => 
-                            Card(
-                              color: Colors.grey[200],
-                              elevation: 3,
-                              semanticContainer: true,
-                              clipBehavior: Clip.antiAliasWithSaveLayer,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(20)),
-                              ),
-                              child: Container(
-                                height: size.height * 0.3,
-                                width: size.width * 0.4,
-                                child: Column(
-                                  children: <Widget>[
-                                    Container(
-                                      height: size.height * 0.25,
-                                      width: size.width * 0.4,
-                                      child: Image.file(state.collentions[index].colimg, fit: BoxFit.fill,),
-                                    ),
-                                    Container(
-                                      height: size.height * 0.05,
-                                      width: size.width * 0.4,
-                                      alignment: Alignment.center,
-                                      child: Text(
-                                        '${state.collentions[index].colname}'.toUpperCase(),
-                                        style: Theme.of(context).textTheme.button.copyWith(fontSize: 20),
+                            GestureDetector(
+                              onTap: () => {
+                                Navigator.of(context).pushNamed(AppRoutes.showitem, arguments: index),
+                              },
+                              child: Card(
+                                color: Colors.grey[200],
+                                elevation: 3,
+                                semanticContainer: true,
+                                clipBehavior: Clip.antiAliasWithSaveLayer,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                                ),
+                                child: Container(
+                                  height: size.height * 0.3,
+                                  width: size.width * 0.4,
+                                  child: Column(
+                                    children: <Widget>[
+                                      Container(
+                                        height: size.height * 0.25,
+                                        width: size.width * 0.4,
+                                        child: Image.file(state.collentions[index].colimg, fit: BoxFit.fill,),
                                       ),
-                                    ),
-                                  ],
+                                      Container(
+                                        height: size.height * 0.05,
+                                        width: size.width * 0.4,
+                                        alignment: Alignment.center,
+                                        child: Text(
+                                          '${state.collentions[index].colname}'.toUpperCase(),
+                                          style: Theme.of(context).textTheme.button.copyWith(fontSize: 20),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),

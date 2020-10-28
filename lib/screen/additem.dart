@@ -4,6 +4,9 @@ import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
 class AdditemScreen extends StatefulWidget {
+
+  final int colindex;
+  AdditemScreen(this.colindex);
   @override
   _AdditemScreenState createState() => _AdditemScreenState();
 }

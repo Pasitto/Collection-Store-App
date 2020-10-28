@@ -1,6 +1,17 @@
 import 'package:flutter/material.dart';
 
+class DetailParameter {
+  final int colindex;
+  final int itemindex;
+  DetailParameter(this.colindex, this.itemindex);
+}
+
 class DetailScreen extends StatefulWidget {
+
+  final int colindex;
+  final int itemindex;
+  DetailScreen(this.colindex,this.itemindex,);
+
   @override
   _DetailScreenState createState() => _DetailScreenState();
 }

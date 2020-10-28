@@ -20,9 +20,9 @@ class Account{
     collections.add(col);
   }
 
-  void additem(int index, Item it){
-    collections[index].itemsize++;
-    collections[index].items.add(it);
+  void additem(Item it, int colindex){
+    collections[colindex].itemsize++;
+    collections[colindex].items.add(it);
   }
 }
 

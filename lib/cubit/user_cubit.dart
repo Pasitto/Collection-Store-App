@@ -15,7 +15,7 @@ class UserCubit extends Cubit<Account> {
     state.addcollection(col);
   }
 
-  void additem(int colindex, Item it){
-    state.additem(colindex, it);
+  void additem(Item it, int colindex){
+    state.additem(it, colindex);
   }
 }

@@ -126,7 +126,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         mini: true,
                         child: Icon(Icons.add),
                         onPressed: () => {
-                          Navigator.of(context).pushNamed(AppRoutes.addcol),
+                          Navigator.of(context).pushNamed(AppRoutes.addcol)
+                          .then((value) => this.setState(() {})),
                         },
                       ),
                     ],
@@ -147,7 +148,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           itemBuilder: (context, index) => 
                             GestureDetector(
                               onTap: () => {
-                                Navigator.of(context).pushNamed(AppRoutes.showitem, arguments: index),
+                                Navigator.of(context).pushNamed(AppRoutes.showitem, arguments: index)
+                                .then((value) => this.setState(() {})),
                               },
                               child: Card(
                                 color: Colors.grey[200],

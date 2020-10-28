@@ -58,7 +58,8 @@ class _ShowitemScreenState extends State<ShowitemScreen> {
                         mini: true,
                         child: Icon(Icons.add),
                         onPressed: () => {
-                          Navigator.of(context).pushNamed(AppRoutes.additem),
+                          Navigator.of(context).pushNamed(AppRoutes.additem, arguments: widget.colindex)
+                          .then((value) => this.setState(() {})),
                         },
                       ),
                     ],
@@ -78,7 +79,8 @@ class _ShowitemScreenState extends State<ShowitemScreen> {
                           itemBuilder: (context, index) => 
                             GestureDetector(
                               onTap: () => {
-                                Navigator.of(context).pushNamed(AppRoutes.detail, arguments: DetailParameter(widget.colindex, index)),
+                                Navigator.of(context).pushNamed(AppRoutes.detail, arguments: DetailParameter(widget.colindex, index))
+                                .then((value) => this.setState(() {})),
                               },
                               child: Card(
                                 color: Colors.grey[200],

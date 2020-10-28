@@ -214,14 +214,15 @@ class _AdditemScreenState extends State<AdditemScreen> {
                         borderRadius: BorderRadius.all(Radius.circular(30)),
                       ),
                       onPressed: () => {
-                        context.bloc<UserCubit>().additem(widget.colindex, 
+                        context.bloc<UserCubit>().additem( 
                           Item(
                             _image,
                             _namecontroller.text,
                             _discontroller.text,
                             selected,
                             isSwitched,
-                          )
+                          ),
+                          widget.colindex,
                         ),
                         context.bloc<UserCubit>().update(),
                         Navigator.of(context).pop(),
